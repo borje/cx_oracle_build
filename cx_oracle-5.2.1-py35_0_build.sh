@@ -39,7 +39,7 @@ conda build cx_oracle
 
 ls -lh $HOME/anaconda3/conda-bld/linux-64/cx_oracle-5.2.1-py35_0.tar.bz2
 
-conda install --use-local cx_oracle
+conda install --use-local --yes cx_oracle
 conda list oracle
 
 # Clean up
