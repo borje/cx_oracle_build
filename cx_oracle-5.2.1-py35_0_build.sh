@@ -46,3 +46,5 @@ conda list oracle
 rm $HOME/Downloads/instantclient-*.zip
 rm -rf /tmp/cx_oracle_build
 conda clean --all --yes
+
+python -c "import cx_Oracle; print(cx_Oracle.__version__)"
