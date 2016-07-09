@@ -3,7 +3,7 @@
 #
 # Based on http://conda.pydata.org/docs/build_tutorials/pkgs.html
 #
-# Build environment: Ubuntu 16.04 with Anaconda3-4.1.1-Linux-x86_64 install in $HOME/anaconda3
+# Build environment: Ubuntu 16.04 with Anaconda3-4.1.1-Linux-x86_64 installed in $HOME/anaconda3
 #
 # Download from http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html
 #  - instantclient-basic-linux.x64-12.1.0.2.0.zip
@@ -28,7 +28,7 @@ cd /tmp/cx_oracle_build
 
 conda skeleton pypi cx_Oracle --version 5.2.1
 
-# conda build looks for capital 'O' in Oracle in path name
+# conda build expects a capital 'O' in Oracle in the path name
 mv /tmp/cx_oracle_build/cx_oracle /tmp/cx_oracle_build/cx_Oracle  
 
 echo "build:
