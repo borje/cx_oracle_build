@@ -11,6 +11,7 @@
 
 sudo apt-get -y update
 sudo apt-get -y install python3-dev build-essential libaio1 unzip
+conda clean --all --yes
 
 conda upgrade conda-build
 
