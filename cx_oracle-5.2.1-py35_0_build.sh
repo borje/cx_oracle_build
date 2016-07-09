@@ -26,19 +26,16 @@ export LD_LIBRARY_PATH=/tmp/cx_oracle_build/instantclient_12_1
 
 cd /tmp/cx_oracle_build
 
-conda skeleton pypi cx_Oracle --version 5.2.1
-
-# conda build expects a capital 'O' in Oracle in the path name
-mv /tmp/cx_oracle_build/cx_oracle /tmp/cx_oracle_build/cx_Oracle  
+conda skeleton pypi cx_oracle --version 5.2.1
 
 echo "build:
   script_env:
    - ORACLE_HOME
-   - LD_LIBRARY_PATH" | tee -a /tmp/cx_oracle_build/cx_Oracle/meta.yaml
+   - LD_LIBRARY_PATH" | tee -a /tmp/cx_oracle_build/cx_oracle/meta.yaml
 
 #cat /tmp/cx_oracle_build/cx_Oracle/meta.yaml
 
-conda build cx_Oracle
+conda build cx_oracle
 
 ls -lh $HOME/anaconda3/conda-bld/linux-64/cx_oracle-5.2.1-py35_0.tar.bz2
 
