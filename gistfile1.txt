@@ -1,8 +1,10 @@
-# Build a conda package for cx_oracle-5.2.1-py35 on Linux
+# Build Python 3.5 conda package for cx_oracle 5.2.1 on Linux
 # Currently(2016-07-09) only cx_oracle-5.1.2-py27 is avalible in the conda repository.
-
+#
+# Based on http://conda.pydata.org/docs/build_tutorials/pkgs.html
+#
 # Build environment: Ubuntu 16.04 with Anaconda3-4.1.1-Linux-x86_64 install in $HOME/anaconda3
-
+#
 # Download from http://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html
 #  - instantclient-basic-linux.x64-12.1.0.2.0.zip
 #  - instantclient-sdk-linux.x64-12.1.0.2.0.zip
@@ -26,7 +28,8 @@ cd /tmp/cx_oracle_build
 
 conda skeleton pypi cx_Oracle --version 5.2.1
 
-mv /tmp/cx_oracle_build/cx_oracle /tmp/cx_oracle_build/cx_Oracle
+# conda build looks for capital 'O' in Oracle in path name
+mv /tmp/cx_oracle_build/cx_oracle /tmp/cx_oracle_build/cx_Oracle  
 
 echo "build:
   script_env:
