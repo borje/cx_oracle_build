@@ -48,3 +48,4 @@ conda install --use-local cx_oracle
 # Clean up
 rm $HOME/Downloads/instantclient-*.zip
 rm -rf /tmp/cx_oracle_build
+conda clean --all --yes
