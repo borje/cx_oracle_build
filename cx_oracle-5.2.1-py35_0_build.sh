@@ -1,4 +1,3 @@
-```bash
 # Build Python 3.5 conda package for cx_oracle 5.2.1 on Linux
 # Currently(2016-07-09) only cx_oracle-5.1.2-py27 is avalible in the conda repository.
 #
@@ -50,4 +49,3 @@ conda list oracle
 rm $HOME/Downloads/instantclient-*.zip
 rm -rf /tmp/cx_oracle_build
 conda clean --all --yes
-```
