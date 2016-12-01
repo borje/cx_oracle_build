@@ -9,13 +9,16 @@
 #  - instantclient-basic-linux.x64-12.1.0.2.0.zip
 #  - instantclient-sdk-linux.x64-12.1.0.2.0.zip
 
-sudo apt-get -y update
-sudo apt-get -y install python3-dev build-essential libaio1 unzip
+#sudo apt-get -y update
+#sudo apt-get -y install python3-dev build-essential libaio1 unzip
 
+set -e
 conda upgrade conda-build
 
+rm -rf /tmp/cx_oracle_build
 mkdir -p /tmp/cx_oracle_build
 
+cp $HOME/Downloads/backup/instant* $HOME/Downloads/
 unzip $HOME/Downloads/instantclient-basic-linux.x64-12.1.0.2.0.zip -d /tmp/cx_oracle_build
 unzip $HOME/Downloads/instantclient-sdk-linux.x64-12.1.0.2.0.zip -d /tmp/cx_oracle_build
 
