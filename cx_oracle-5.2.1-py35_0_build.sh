@@ -15,8 +15,8 @@
 set -e
 conda upgrade conda-build
 
-rm -rf /tmp/cx_oracle_build
 mkdir -p /tmp/cx_oracle_build
+rm -rf /tmp/cx_oracle_build
 
 cp $HOME/Downloads/backup/instant* $HOME/Downloads/
 unzip $HOME/Downloads/instantclient-basic-linux.x64-12.1.0.2.0.zip -d /tmp/cx_oracle_build
@@ -24,30 +24,39 @@ unzip $HOME/Downloads/instantclient-sdk-linux.x64-12.1.0.2.0.zip -d /tmp/cx_orac
 
 ln -s /tmp/cx_oracle_build/instantclient_12_1/libclntsh.so.12.1 /tmp/cx_oracle_build/instantclient_12_1/libclntsh.so
 
+read -p "asdf:"
 export ORACLE_HOME=/tmp/cx_oracle_build/instantclient_12_1
 export LD_LIBRARY_PATH=/tmp/cx_oracle_build/instantclient_12_1
 
 cd /tmp/cx_oracle_build
 
-conda skeleton pypi cx_oracle --version 5.2.1
+#conda skeleton pypi cx_oracle --version 5.2.1
+conda skeleton pypi cx_oracle
 
 echo "build:
   script_env:
    - ORACLE_HOME
    - LD_LIBRARY_PATH" | tee -a /tmp/cx_oracle_build/cx_oracle/meta.yaml
+echo "pwd;read 'wait'" | tee -a /tmp/cx_oracle_build/cx_oracle/build.sh
+
 
 #cat /tmp/cx_oracle_build/cx_Oracle/meta.yaml
 
 conda build cx_oracle
 
 ls -lh $HOME/anaconda3/conda-bld/linux-64/cx_oracle-5.2.1-py35_0.tar.bz2
+echo "Conda package created"
 
 conda install --use-local --yes cx_oracle
 conda list oracle
 
+python -c "import cx_Oracle; print(cx_Oracle.__version__)"
+
 # Clean up
 rm $HOME/Downloads/instantclient-*.zip
 rm -rf /tmp/cx_oracle_build
-conda clean --all --yes
+echo "Before clean"
+read -p "asdf: "
+#conda clean --all --yes
+echo "After clean"
 
-python -c "import cx_Oracle; print(cx_Oracle.__version__)"
